@@ -1,0 +1,25 @@
+{% extends 'auth/user_base.html' %}
+
+
+{% block meta_title %}
+    User Detail
+{% endblock %}
+
+
+{% block main %}
+
+<div>
+    <h2>{{user.get_full_name}}</h2>
+    <div>Username: {{user.username}}</div>
+    <div>Last login: {{user.last_login}}</div>
+    <div>Date joined: {{user.date_joined}}</div>
+    <div>Email: {{user.email}}</div>
+    <div>SuperUser: {{user.is_superuser}}</div>
+    <div>Staff: {{user.is_staff}}</div>
+    <div>Active: {{user.is_active}}</div>
+    <div>Groups: {{user.groups}}</div>
+    <div>Permissions: {{user.user_permissions}}</div>
+    <div>ID: {{user.id}}</div>
+</div>
+
+{% endblock %}
