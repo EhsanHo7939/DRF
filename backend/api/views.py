@@ -1,11 +1,11 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from .permissions import IsSuperUserOrStaffReadOnly_List, IsSuperUserOrStaffReadOnly_Detail, IsAuthorOrReadOnly, IsStaffOrReadOnly
-from blog.models import Article
-from django.contrib.auth.models import User
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework.views import APIView
+# from rest_framework.response import Response
 from .serializers import ArticleSerializer, UserSerializer
+from django.contrib.auth.models import User
+from blog.models import Article
 
 
 # Create your views here.
@@ -33,9 +33,9 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsSuperUserOrStaffReadOnly_Detail,)
 
 
-class RevokeToken(APIView):
-    permission_classes = (IsAuthenticated,)
+# class RevokeToken(APIView):
+#     permission_classes = (IsAuthenticated,)
 
-    def delete(self, request):
-        request.auth.delete()
-        return Response(status=204)
+#     def delete(self, request):
+#         request.auth.delete()
+#         return Response(status=204)
