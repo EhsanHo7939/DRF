@@ -13,6 +13,7 @@ urlpatterns = [
     path("users/", UserList.as_view(), name="user_list"),
     path("users/<int:pk>", UserDetail.as_view(), name="user_detail"),
     path('auth/', include('dj_rest_auth.urls'), name="authentication"),
+    path('auth/registration/', include('dj_rest_auth.registration.urls'), name="registration"),
     # path("token-auth/", obtain_auth_token, name="obtain_token"),
     # path("token-revoke/", RevokeToken.as_view(), name="revoke_token"),
 ]
