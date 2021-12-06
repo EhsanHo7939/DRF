@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .models import Article
 
 
@@ -21,12 +21,12 @@ class ArticleDetail(DetailView):
 
 class UserList(ListView):
     def get_queryset(self):
-        return User.objects.filter(is_active=True)
+        return get_user_model().objects.filter(is_active=True)
 
 
 class UserDetail(DetailView):
     def get_object(self):
         return get_object_or_404(
-            User.objects.filter(is_active=True),
+            get_user_model().objects.filter(is_active=True),
             pk=self.kwargs.get("pk")
         )

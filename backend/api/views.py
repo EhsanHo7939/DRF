@@ -4,7 +4,7 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
 from .serializers import ArticleSerializer, UserSerializer
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from blog.models import Article
 
 
@@ -22,13 +22,13 @@ class ArticleDetail(RetrieveUpdateDestroyAPIView):
 
 
 class UserList(ListCreateAPIView):
-    queryset = User.objects.all()
+    queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsSuperUserOrStaffReadOnly_List,)
 
 
 class UserDetail(RetrieveUpdateDestroyAPIView):
-    queryset = User.objects.all()
+    queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsSuperUserOrStaffReadOnly_Detail,)
 
