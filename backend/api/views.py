@@ -14,6 +14,13 @@ class ArticleList(ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     filterset_fields = ["status", "author"]
+    search_fields = [
+        "title",
+        "content",
+        "author__username",
+        "author__first_name",
+        "author__last_name"
+    ]
 
 class ArticleDetail(RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
