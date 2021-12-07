@@ -14,6 +14,7 @@ class ArticleList(ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     filterset_fields = ["status", "author"]
+    ordering_fields = ["publish", "status"]
     search_fields = [
         "title",
         "content",
