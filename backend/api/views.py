@@ -13,7 +13,7 @@ from blog.models import Article
 class ArticleList(ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-
+    filterset_fields = ["status", "author"]
 
 class ArticleDetail(RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
@@ -25,6 +25,7 @@ class UserList(ListCreateAPIView):
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsSuperUserOrStaffReadOnly_List,)
+    filterset_fields = ["is_superuser", "is_staff", "is_active"]
 
 
 class UserDetail(RetrieveUpdateDestroyAPIView):
